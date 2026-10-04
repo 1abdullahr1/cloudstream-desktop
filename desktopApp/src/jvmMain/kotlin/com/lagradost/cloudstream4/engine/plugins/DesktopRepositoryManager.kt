@@ -1,7 +1,6 @@
 package com.lagradost.cloudstream4.engine.plugins
 
 import com.lagradost.cloudstream4.FilePreferenceStore
-import com.lagradost.cloudstream3.app
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -101,7 +100,12 @@ object DesktopRepositoryManager {
 
     suspend fun fetchPluginsFromRepo(repo: DesktopRepository): List<DesktopPluginInfo> = withContext(Dispatchers.IO) {
         try {
-            val response = app.get(repo.url).text
+            val connection = (java.net.URI.create(repo.url).toURL().openConnection() as java.net.HttpURLConnection).apply {
+                setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36")
+                connectTimeout = 15000
+                readTimeout = 30000
+            }
+            val response = connection.inputStream.bufferedReader().use { it.readText() }
             val plugins = json.decodeFromString<List<DesktopPluginInfo>>(response)
             plugins.map { it.copy(repositoryUrl = repo.url) }
         } catch (_: Throwable) {

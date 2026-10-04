@@ -18,7 +18,6 @@ import com.lagradost.cloudstream3.SubtitleFile
 import com.lagradost.cloudstream3.TvSeriesLoadResponse
 import com.lagradost.cloudstream3.TvSeriesSearchResponse
 import com.lagradost.cloudstream3.TvType
-import com.lagradost.cloudstream3.app
 import com.lagradost.cloudstream3.plugins.BasePlugin
 import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.Qualities
@@ -47,6 +46,7 @@ data class InstalledPluginRecord(
 /**
  * Built-in open streaming provider for out-of-the-box streaming and instant testing.
  */
+@Suppress("DEPRECATION_ERROR")
 class BuiltinStreamProvider : MainAPI() {
     override var name = "CloudStream Featured"
     override var mainUrl = "https://cloudstream.internal"
@@ -277,7 +277,12 @@ object DesktopPluginManager {
             onProgress(0.2f)
 
             // Download file
-            val bytes = app.get(info.url).body.bytes()
+            val connection = (java.net.URI.create(info.url).toURL().openConnection() as java.net.HttpURLConnection).apply {
+                setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36")
+                connectTimeout = 15000
+                readTimeout = 30000
+            }
+            val bytes = connection.inputStream.use { it.readBytes() }
             destFile.writeBytes(bytes)
             onProgress(0.5f)
 

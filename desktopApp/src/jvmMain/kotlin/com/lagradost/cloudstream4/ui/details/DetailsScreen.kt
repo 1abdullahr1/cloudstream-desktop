@@ -357,23 +357,27 @@ fun DetailsScreen(
                                     fontWeight = FontWeight.SemiBold
                                 )
 
-                                if (details.rating != null && details.rating!! > 0) {
-                                    Spacer(modifier = Modifier.width(8.dp))
-                                    Text("•", color = Color.White.copy(alpha = 0.5f))
-                                    Spacer(modifier = Modifier.width(8.dp))
-                                    Icon(
-                                        imageVector = AppIcons.Star,
-                                        contentDescription = "Rating",
-                                        tint = Color(0xFFFFB800),
-                                        modifier = Modifier.size(14.dp)
-                                    )
-                                    Spacer(modifier = Modifier.width(3.dp))
-                                    Text(
-                                        text = String.format("%.1f", details.rating!! / 1000f),
-                                        fontSize = 13.sp,
-                                        fontWeight = FontWeight.Bold,
-                                        color = Color.White
-                                    )
+                                val score = details.score
+                                if (score != null) {
+                                    val scoreVal = score.toFloat(10)
+                                    if (scoreVal > 0f) {
+                                        Spacer(modifier = Modifier.width(8.dp))
+                                        Text("•", color = Color.White.copy(alpha = 0.5f))
+                                        Spacer(modifier = Modifier.width(8.dp))
+                                        Icon(
+                                            imageVector = AppIcons.Star,
+                                            contentDescription = "Rating",
+                                            tint = Color(0xFFFFB800),
+                                            modifier = Modifier.size(14.dp)
+                                        )
+                                        Spacer(modifier = Modifier.width(3.dp))
+                                        Text(
+                                            text = String.format("%.1f", scoreVal),
+                                            fontSize = 13.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            color = Color.White
+                                        )
+                                    }
                                 }
                             }
 
