@@ -12,5 +12,5 @@ actual fun rememberAppSettings(): AppSettings {
 }
 
 fun AppSettings() : AppSettings {
-    return AppSettings(preferences = InMemoryPreferenceStore())
+    return AppSettings(preferences = FilePreferenceStore.instance)
 }

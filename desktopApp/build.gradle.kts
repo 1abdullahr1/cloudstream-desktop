@@ -11,9 +11,14 @@ kotlin {
     sourceSets {
         jvmMain.dependencies {
             implementation(libs.bundles.compose)
+            implementation(libs.compose.material.icons.extended)
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.coroutines.swing)
             implementation(libs.kotlinx.collections.immutable)
+            implementation(libs.kotlinx.serialization.json)
+            implementation(libs.ktor.client.java)
+            implementation(libs.vlcj)
+            implementation(libs.dex.translator)
             implementation(compose.desktop.currentOs) {
                 // compose.desktop.currentOs imports the wrong material 2, so we exclude it
                 exclude(group = "org.jetbrains.compose.material", module = "material")
@@ -33,19 +38,17 @@ compose.desktop {
     application {
         mainClass = "com.lagradost.cloudstream4.MainKt"
         nativeDistributions {
-            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            targetFormats(TargetFormat.Msi, TargetFormat.Exe)
             packageName = "CloudStream"
             packageVersion = "1.0.0"
+            description = "CloudStream for Windows"
+            vendor = "CloudStream"
 
-            val iconsRoot = project.file("desktop-icons")
-            macOS {
-                // iconFile.set(iconsRoot.resolve("icon-mac.icns"))
-            }
+            val iconsRoot = project.file("src/desktop-icons")
             windows {
                 iconFile.set(iconsRoot.resolve("icon-windows.ico"))
-                // menuGroup = "Compose Examples"
-                // see https://wixtoolset.org/documentation/manual/v3/howtos/general/generate_guids.html
-                // upgradeUuid = ""
+                menuGroup = "CloudStream"
+                upgradeUuid = "e6c43491-b66e-4903-8898-d2182049e29a"
             }
             linux {
                 iconFile.set(iconsRoot.resolve("icon-linux.png"))

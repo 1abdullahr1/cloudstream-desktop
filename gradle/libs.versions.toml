@@ -58,6 +58,9 @@ zipline = "1.27.0"
 composeMaterial3 = "1.12.0-alpha03"
 composeMultiplatform = "1.12.0"
 lifecycleViewmodelCompose = "2.11.0"
+vlcj = "4.11.0"
+vlcjNatives = "4.8.3"
+dexTranslator = "1.1.1"
 
 # jvmTarget = "11" is needed for compose, otherwise you will get
 # "Cannot inline bytecode built with JVM target 11 into bytecode" or
@@ -155,8 +158,12 @@ compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.re
 compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "composeMultiplatform" }
 compose-ui-tooling = { module = "org.jetbrains.compose.ui:ui-tooling", version.ref = "composeMultiplatform" }
 compose-ui-tooling-preview = { module = "org.jetbrains.compose.ui:ui-tooling-preview", version.ref = "composeMultiplatform" }
+compose-material-icons-extended = { module = "org.jetbrains.compose.material:material-icons-extended", version.ref = "composeMultiplatform" }
 lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
+vlcj = { module = "uk.co.caprica:vlcj", version.ref = "vlcj" }
+vlcj-natives = { module = "uk.co.caprica:vlcj-natives", version.ref = "vlcjNatives" }
+dex-translator = { module = "software.coley:dex-translator", version.ref = "dexTranslator" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
