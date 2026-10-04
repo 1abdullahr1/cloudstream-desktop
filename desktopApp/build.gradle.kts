@@ -17,7 +17,7 @@ kotlin {
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.ktor.client.java)
             implementation(libs.vlcj)
-            implementation(libs.dex.translator) {
+            implementation("software.coley:dex-translator:1.1.1") {
                 exclude(group = "com.android.tools", module = "r8")
             }
             implementation("com.android.tools:r8:8.3.37")
