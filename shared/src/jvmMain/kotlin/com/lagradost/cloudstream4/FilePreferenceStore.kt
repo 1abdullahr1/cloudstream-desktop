@@ -28,6 +28,7 @@ import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonPrimitive
 import kotlinx.serialization.json.longOrNull
+import kotlinx.serialization.json.put
 import java.io.File
 import java.util.concurrent.ConcurrentHashMap
 
@@ -229,7 +230,7 @@ class FilePreferenceStore private constructor(private val file: File) : Preferen
                 memoryStore.remove(key)
                 notifyChanged(key, null)
             }
-            override fun defaultValue(): T = defaultValue as T
+            override fun defaultValue(): Set<T> = defaultValue
             override fun changes(): Flow<Set<T>> = changeNotifier
                 .filter { it.first == key }
                 .map { get() }

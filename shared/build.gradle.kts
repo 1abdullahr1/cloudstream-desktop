@@ -51,6 +51,7 @@ kotlin {
 
         jvmMain.dependencies {
             implementation(libs.ktor.client.java)
+            implementation(libs.kotlinx.serialization.json)
         }
     }
 }
