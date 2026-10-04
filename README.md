@@ -1,4 +1,8 @@
-# CloudStream
+# CloudStream for Windows Desktop
+
+[![Build Windows Desktop App](https://github.com/1abdullahr1/cloudstream-desktop/actions/workflows/windows_desktop_build.yml/badge.svg)](https://github.com/1abdullahr1/cloudstream-desktop/actions/workflows/windows_desktop_build.yml)
+
+CloudStream native desktop app built with Compose Multiplatform, LibVLC hardware acceleration, and dynamic Android extension support.
 
 **⚠️ Warning: By default, this app doesn't provide any video sources; you have to install extensions to add functionality to the app.**
 <p align="left"><a href="https://github.com/recloudstream/cloudstream/releases/download/pre-release/app-prerelease-release.apk"><img src=".github/images/download-cloudstream-pre.png" alt="Download Cloudstream Pre-Release" width=430/></a></p>
