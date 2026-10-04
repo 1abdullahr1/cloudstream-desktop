@@ -30,7 +30,7 @@ jobs:
           cache-read-only: false
 
       - name: Build Windows Distributable & MSI Package
-        run: ./gradlew :desktopApp:packageMsi :desktopApp:createDistributable --stacktrace
+        run: ./gradlew :desktopApp:packageMsi :desktopApp:createDistributable --no-daemon --stacktrace
         env:
           JAVA_HOME: ${{ env.JAVA_HOME }}
 

@@ -17,13 +17,27 @@ kotlin {
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.ktor.client.java)
             implementation(libs.vlcj)
-            implementation(libs.dex.translator)
+            implementation(libs.dex.translator) {
+                exclude(group = "com.android.tools", module = "r8")
+            }
+            implementation("com.android.tools:r8:8.3.37")
             implementation(compose.desktop.currentOs) {
                 // compose.desktop.currentOs imports the wrong material 2, so we exclude it
                 exclude(group = "org.jetbrains.compose.material", module = "material")
             }
             implementation(project(":shared"))
             implementation(project(":library"))
+        }
+    }
+}
+
+configurations.all {
+    resolutionStrategy {
+        eachDependency {
+            if (requested.group == "com.android.tools" && requested.name == "r8") {
+                useVersion("8.3.37")
+                because("com.android.tools:r8:8.3.0 is not available in Google Maven, whereas 8.3.37 is")
+            }
         }
     }
 }
