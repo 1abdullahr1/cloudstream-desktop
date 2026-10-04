@@ -18,9 +18,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material.icons.filled.Refresh
 import com.lagradost.cloudstream4.ui.components.AppIcons
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenu
@@ -96,7 +93,9 @@ fun HomeScreen(
                                 horizontalImages = pageData.horizontalImages
                             )
                             val res = prov.getMainPage(1, req)
-                            lists.addAll(res.items)
+                            if (res?.items != null) {
+                                lists.addAll(res.items)
+                            }
                         } catch (_: Throwable) {
                             // Skip failed section
                         }
@@ -105,7 +104,7 @@ fun HomeScreen(
                     // Fallback search popular
                     try {
                         val popular = prov.search("")
-                        if (popular.isNotEmpty()) {
+                        if (!popular.isNullOrEmpty()) {
                             lists.add(HomePageList("Popular Titles", popular))
                         }
                     } catch (_: Throwable) {}
@@ -196,7 +195,7 @@ fun HomeScreen(
                 onClick = { refreshTrigger++ }
             ) {
                 Icon(
-                    imageVector = Icons.Default.Refresh,
+                    imageVector = AppIcons.Refresh,
                     contentDescription = "Refresh",
                     tint = MaterialTheme.colorScheme.onSurfaceVariant
                 )

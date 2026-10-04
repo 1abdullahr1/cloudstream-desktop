@@ -15,8 +15,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Info
+import androidx.compose.ui.graphics.Color
 import com.lagradost.cloudstream4.ui.components.AppIcons
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -187,7 +186,7 @@ fun SettingsScreen(
             item {
                 SettingsSection(
                     title = "About",
-                    icon = Icons.Default.Info
+                    icon = AppIcons.Info
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
                         Text(

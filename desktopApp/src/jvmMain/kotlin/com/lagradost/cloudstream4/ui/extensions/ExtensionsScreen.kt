@@ -17,11 +17,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Refresh
 import com.lagradost.cloudstream4.ui.components.AppIcons
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
@@ -120,7 +115,7 @@ fun ExtensionsScreen(
                 onClick = { showAddRepoDialog = true },
                 shape = RoundedCornerShape(8.dp)
             ) {
-                Icon(Icons.Default.Add, contentDescription = "Add Repo")
+                Icon(AppIcons.Add, contentDescription = "Add Repo")
                 Spacer(modifier = Modifier.width(6.dp))
                 Text("Add Repository")
             }
@@ -256,7 +251,7 @@ fun ExtensionsScreen(
                                 onClick = { DesktopPluginManager.uninstallPlugin(plugin.internalName) }
                             ) {
                                 Icon(
-                                    imageVector = Icons.Default.Delete,
+                                    imageVector = AppIcons.Delete,
                                     contentDescription = "Uninstall",
                                     tint = MaterialTheme.colorScheme.error
                                 )
@@ -296,7 +291,7 @@ fun ExtensionsScreen(
 
                             IconButton(onClick = ::refreshOnlinePlugins) {
                                 Icon(
-                                    imageVector = Icons.Default.Refresh,
+                                    imageVector = AppIcons.Refresh,
                                     contentDescription = "Refresh",
                                     tint = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
@@ -354,7 +349,7 @@ fun ExtensionsScreen(
                                     ) {
                                         Row(verticalAlignment = Alignment.CenterVertically) {
                                             Icon(
-                                                imageVector = Icons.Default.Check,
+                                                imageVector = AppIcons.Check,
                                                 contentDescription = "Installed",
                                                 tint = Color(0xFF4CAF50),
                                                 modifier = Modifier.size(16.dp)

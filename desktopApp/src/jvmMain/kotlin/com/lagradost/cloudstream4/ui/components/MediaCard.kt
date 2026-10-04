@@ -18,8 +18,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Star
+import com.lagradost.cloudstream4.ui.components.AppIcons
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -137,7 +136,7 @@ fun MediaCard(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Icon(
-                                imageVector = Icons.Default.Star,
+                                imageVector = AppIcons.Star,
                                 contentDescription = "Rating",
                                 tint = Color(0xFFFFB800),
                                 modifier = Modifier.size(12.dp)

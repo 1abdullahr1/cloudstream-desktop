@@ -19,10 +19,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material.icons.filled.Star
 import com.lagradost.cloudstream4.ui.components.AppIcons
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
@@ -240,7 +236,7 @@ fun DetailsScreen(
                                 .background(Color.Black.copy(alpha = 0.5f))
                         ) {
                             Icon(
-                                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                                imageVector = AppIcons.ArrowBack,
                                 contentDescription = "Back",
                                 tint = Color.White
                             )
@@ -366,7 +362,7 @@ fun DetailsScreen(
                                     Text("•", color = Color.White.copy(alpha = 0.5f))
                                     Spacer(modifier = Modifier.width(8.dp))
                                     Icon(
-                                        imageVector = Icons.Default.Star,
+                                        imageVector = AppIcons.Star,
                                         contentDescription = "Rating",
                                         tint = Color(0xFFFFB800),
                                         modifier = Modifier.size(14.dp)
@@ -397,7 +393,7 @@ fun DetailsScreen(
                                 shape = RoundedCornerShape(8.dp),
                                 colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
                             ) {
-                                Icon(Icons.Default.PlayArrow, contentDescription = "Play")
+                                Icon(AppIcons.PlayArrow, contentDescription = "Play")
                                 Spacer(modifier = Modifier.width(6.dp))
                                 Text(if (isSeries) "Watch Episode 1" else "Play Movie", fontWeight = FontWeight.Bold)
                             }
@@ -501,7 +497,7 @@ fun DetailsScreen(
                                     contentAlignment = Alignment.Center
                                 ) {
                                     Icon(
-                                        imageVector = Icons.Default.PlayArrow,
+                                        imageVector = AppIcons.PlayArrow,
                                         contentDescription = "Play",
                                         tint = Color.White.copy(alpha = 0.8f),
                                         modifier = Modifier.size(28.dp)
@@ -613,7 +609,7 @@ fun DetailsScreen(
                                         verticalAlignment = Alignment.CenterVertically
                                     ) {
                                         Icon(
-                                            imageVector = Icons.Default.PlayArrow,
+                                            imageVector = AppIcons.PlayArrow,
                                             contentDescription = "Play",
                                             tint = MaterialTheme.colorScheme.primary,
                                             modifier = Modifier.size(20.dp)

@@ -16,9 +16,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.PlayArrow
 import com.lagradost.cloudstream4.ui.components.AppIcons
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -164,7 +161,7 @@ fun DownloadsScreen(
                                                 shape = RoundedCornerShape(6.dp),
                                                 colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
                                             ) {
-                                                Icon(Icons.Default.PlayArrow, contentDescription = "Play")
+                                                Icon(AppIcons.PlayArrow, contentDescription = "Play")
                                                 Spacer(modifier = Modifier.width(4.dp))
                                                 Text("Play")
                                             }
@@ -176,7 +173,7 @@ fun DownloadsScreen(
                                         }
                                         DownloadState.Paused -> {
                                             IconButton(onClick = { DesktopDownloadManager.resumeDownload(item.id) }) {
-                                                Icon(Icons.Default.PlayArrow, contentDescription = "Resume", tint = MaterialTheme.colorScheme.primary)
+                                                Icon(AppIcons.PlayArrow, contentDescription = "Resume", tint = MaterialTheme.colorScheme.primary)
                                             }
                                         }
                                         else -> {}
@@ -185,7 +182,7 @@ fun DownloadsScreen(
                                     Spacer(modifier = Modifier.width(6.dp))
 
                                     IconButton(onClick = { DesktopDownloadManager.cancelDownload(item.id) }) {
-                                        Icon(Icons.Default.Close, contentDescription = "Cancel", tint = MaterialTheme.colorScheme.error)
+                                        Icon(AppIcons.Close, contentDescription = "Cancel", tint = MaterialTheme.colorScheme.error)
                                     }
                                 }
                             }

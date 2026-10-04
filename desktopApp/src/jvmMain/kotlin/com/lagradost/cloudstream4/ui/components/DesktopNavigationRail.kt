@@ -16,10 +16,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Settings
+import com.lagradost.cloudstream4.ui.components.AppIcons
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -98,14 +95,14 @@ fun DesktopNavigationRail(
             // Navigation Items
             NavigationRailItem(
                 label = "Home",
-                icon = Icons.Default.Home,
+                icon = AppIcons.Home,
                 selected = currentScreen is Screen.Home,
                 onClick = { onNavigate(Screen.Home) }
             )
 
             NavigationRailItem(
                 label = "Search",
-                icon = Icons.Default.Search,
+                icon = AppIcons.Search,
                 selected = currentScreen is Screen.Search,
                 onClick = { onNavigate(Screen.Search()) }
             )
@@ -135,7 +132,7 @@ fun DesktopNavigationRail(
 
             NavigationRailItem(
                 label = "Settings",
-                icon = Icons.Default.Settings,
+                icon = AppIcons.Settings,
                 selected = currentScreen is Screen.Settings,
                 onClick = { onNavigate(Screen.Settings) }
             )

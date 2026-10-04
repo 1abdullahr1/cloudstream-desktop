@@ -19,9 +19,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.PlayArrow
 import com.lagradost.cloudstream4.ui.components.AppIcons
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
@@ -229,7 +226,7 @@ fun PlayerScreen(
                     modifier = Modifier.padding(32.dp)
                 ) {
                     Icon(
-                        imageVector = Icons.Default.PlayArrow,
+                        imageVector = AppIcons.PlayArrow,
                         contentDescription = "Stream",
                         tint = MaterialTheme.colorScheme.primary,
                         modifier = Modifier.size(64.dp)
@@ -303,7 +300,7 @@ fun PlayerScreen(
                             .background(Color.Black.copy(alpha = 0.4f))
                     ) {
                         Icon(
-                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            imageVector = AppIcons.ArrowBack,
                             contentDescription = "Back",
                             tint = Color.White
                         )
@@ -369,7 +366,7 @@ fun PlayerScreen(
                         contentAlignment = Alignment.Center
                     ) {
                         Icon(
-                            imageVector = if (isPlaying) AppIcons.Pause else Icons.Default.PlayArrow,
+                            imageVector = if (isPlaying) AppIcons.Pause else AppIcons.PlayArrow,
                             contentDescription = if (isPlaying) "Pause" else "Play",
                             tint = Color.White,
                             modifier = Modifier.size(40.dp)

@@ -20,9 +20,7 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Search
+import com.lagradost.cloudstream4.ui.components.AppIcons
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FilterChipDefaults
@@ -93,7 +91,7 @@ fun SearchScreen(
                             }
                         }
                     }
-                    deferreds.awaitAll().flatten().distinctBy { it.url }
+                    deferreds.awaitAll().filterNotNull().flatten().distinctBy { it.url }
                 } else {
                     val prov = providers.firstOrNull { it.name == selectedProviderName }
                     prov?.search(trimmed) ?: emptyList()
@@ -134,7 +132,7 @@ fun SearchScreen(
             placeholder = { Text("Search movies, TV series, anime across providers...") },
             leadingIcon = {
                 Icon(
-                    imageVector = Icons.Default.Search,
+                    imageVector = AppIcons.Search,
                     contentDescription = "Search",
                     tint = MaterialTheme.colorScheme.primary
                 )
@@ -143,7 +141,7 @@ fun SearchScreen(
                 if (query.isNotEmpty()) {
                     IconButton(onClick = { query = ""; searchResults = emptyList(); hasSearched = false }) {
                         Icon(
-                            imageVector = Icons.Default.Close,
+                            imageVector = AppIcons.Close,
                             contentDescription = "Clear",
                             tint = MaterialTheme.colorScheme.onSurfaceVariant
                         )
