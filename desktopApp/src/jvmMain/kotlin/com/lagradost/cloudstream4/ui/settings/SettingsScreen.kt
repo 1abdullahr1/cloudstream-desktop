@@ -16,12 +16,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.DeleteSweep
-import androidx.compose.material.icons.filled.Folder
 import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.Palette
-import androidx.compose.material.icons.filled.PlayCircle
-import androidx.compose.material.icons.filled.Security
+import com.lagradost.cloudstream4.ui.components.AppIcons
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -97,7 +93,7 @@ fun SettingsScreen(
             item {
                 SettingsSection(
                     title = "Playback & Video",
-                    icon = Icons.Default.PlayCircle
+                    icon = AppIcons.PlayCircleFilled
                 ) {
                     SettingsSwitchRow(
                         title = "Auto-play Next Episode",
@@ -115,7 +111,7 @@ fun SettingsScreen(
             item {
                 SettingsSection(
                     title = "Extensions & Content",
-                    icon = Icons.Default.Security
+                    icon = AppIcons.Security
                 ) {
                     SettingsSwitchRow(
                         title = "Show 18+ Adult (NSFW) Content",
@@ -130,7 +126,7 @@ fun SettingsScreen(
             item {
                 SettingsSection(
                     title = "Storage & Data",
-                    icon = Icons.Default.Folder
+                    icon = AppIcons.Folder
                 ) {
                     Row(
                         modifier = Modifier
@@ -179,7 +175,7 @@ fun SettingsScreen(
                             onClick = { DesktopHistoryManager.clearAll() },
                             colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error)
                         ) {
-                            Icon(Icons.Default.DeleteSweep, contentDescription = "Clear")
+                            Icon(AppIcons.DeleteSweep, contentDescription = "Clear")
                             Spacer(modifier = Modifier.width(4.dp))
                             Text("Clear")
                         }

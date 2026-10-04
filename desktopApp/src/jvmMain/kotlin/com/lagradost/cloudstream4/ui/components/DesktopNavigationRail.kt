@@ -17,13 +17,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Download
-import androidx.compose.material.icons.filled.Extension
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.PlayCircleFilled
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.filled.VideoLibrary
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -73,7 +69,7 @@ fun DesktopNavigationRail(
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
-                        imageVector = Icons.Default.PlayCircleFilled,
+                        imageVector = AppIcons.PlayCircleFilled,
                         contentDescription = "CloudStream",
                         tint = Color.White,
                         modifier = Modifier.size(26.dp)
@@ -116,21 +112,21 @@ fun DesktopNavigationRail(
 
             NavigationRailItem(
                 label = "Library",
-                icon = Icons.Default.VideoLibrary,
+                icon = AppIcons.VideoLibrary,
                 selected = currentScreen is Screen.Library,
                 onClick = { onNavigate(Screen.Library) }
             )
 
             NavigationRailItem(
                 label = "Downloads",
-                icon = Icons.Default.Download,
+                icon = AppIcons.Download,
                 selected = currentScreen is Screen.Downloads,
                 onClick = { onNavigate(Screen.Downloads) }
             )
 
             NavigationRailItem(
                 label = "Extensions",
-                icon = Icons.Default.Extension,
+                icon = AppIcons.Extension,
                 selected = currentScreen is Screen.Extensions,
                 onClick = { onNavigate(Screen.Extensions) }
             )

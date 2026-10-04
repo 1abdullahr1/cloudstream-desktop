@@ -21,11 +21,9 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Bookmark
-import androidx.compose.material.icons.filled.BookmarkBorder
-import androidx.compose.material.icons.filled.Download
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Star
+import com.lagradost.cloudstream4.ui.components.AppIcons
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -260,7 +258,7 @@ fun DetailsScreen(
                                 shape = RoundedCornerShape(8.dp)
                             ) {
                                 Icon(
-                                    imageVector = if (currentBookmark != null) Icons.Default.Bookmark else Icons.Default.BookmarkBorder,
+                                    imageVector = if (currentBookmark != null) AppIcons.Bookmark else AppIcons.BookmarkBorder,
                                     contentDescription = "Bookmark",
                                     tint = if (currentBookmark != null) MaterialTheme.colorScheme.primary else Color.White
                                 )
@@ -649,7 +647,7 @@ fun DetailsScreen(
                                             }
                                         ) {
                                             Icon(
-                                                imageVector = Icons.Default.Download,
+                                                imageVector = AppIcons.Download,
                                                 contentDescription = "Download",
                                                 tint = MaterialTheme.colorScheme.onSurfaceVariant
                                             )

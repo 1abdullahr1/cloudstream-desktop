@@ -21,9 +21,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Download
-import androidx.compose.material.icons.filled.Extension
 import androidx.compose.material.icons.filled.Refresh
+import com.lagradost.cloudstream4.ui.components.AppIcons
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
@@ -176,7 +175,7 @@ fun ExtensionsScreen(
                                 contentAlignment = Alignment.Center
                             ) {
                                 Icon(
-                                    imageVector = Icons.Default.Extension,
+                                    imageVector = AppIcons.Extension,
                                     contentDescription = "Extension",
                                     tint = MaterialTheme.colorScheme.primary
                                 )
@@ -232,7 +231,7 @@ fun ExtensionsScreen(
                                 contentAlignment = Alignment.Center
                             ) {
                                 Icon(
-                                    imageVector = Icons.Default.Extension,
+                                    imageVector = AppIcons.Extension,
                                     contentDescription = "Extension",
                                     tint = Color.White
                                 )
@@ -380,7 +379,7 @@ fun ExtensionsScreen(
                                         },
                                         shape = RoundedCornerShape(6.dp)
                                     ) {
-                                        Icon(Icons.Default.Download, contentDescription = "Install")
+                                        Icon(AppIcons.Download, contentDescription = "Install")
                                         Spacer(modifier = Modifier.width(6.dp))
                                         Text("Install")
                                     }

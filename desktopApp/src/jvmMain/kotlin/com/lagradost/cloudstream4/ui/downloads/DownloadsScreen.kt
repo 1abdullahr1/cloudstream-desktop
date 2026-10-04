@@ -18,9 +18,8 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.FolderOpen
-import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
+import com.lagradost.cloudstream4.ui.components.AppIcons
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -92,7 +91,7 @@ fun DownloadsScreen(
                 onClick = ::openDownloadsFolder,
                 shape = RoundedCornerShape(8.dp)
             ) {
-                Icon(Icons.Default.FolderOpen, contentDescription = "Folder")
+                Icon(AppIcons.FolderOpen, contentDescription = "Folder")
                 Spacer(modifier = Modifier.width(6.dp))
                 Text("Open Folder")
             }
@@ -172,7 +171,7 @@ fun DownloadsScreen(
                                         }
                                         DownloadState.Downloading -> {
                                             IconButton(onClick = { DesktopDownloadManager.pauseDownload(item.id) }) {
-                                                Icon(Icons.Default.Pause, contentDescription = "Pause", tint = MaterialTheme.colorScheme.primary)
+                                                Icon(AppIcons.Pause, contentDescription = "Pause", tint = MaterialTheme.colorScheme.primary)
                                             }
                                         }
                                         DownloadState.Paused -> {

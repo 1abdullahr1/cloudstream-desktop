@@ -21,16 +21,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.automirrored.filled.VolumeDown
-import androidx.compose.material.icons.automirrored.filled.VolumeMute
-import androidx.compose.material.icons.automirrored.filled.VolumeUp
-import androidx.compose.material.icons.filled.ClosedCaption
-import androidx.compose.material.icons.filled.FastForward
-import androidx.compose.material.icons.filled.FastRewind
-import androidx.compose.material.icons.filled.OpenInNew
-import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material.icons.filled.Speed
+import com.lagradost.cloudstream4.ui.components.AppIcons
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenu
@@ -275,7 +267,7 @@ fun PlayerScreen(
                         onClick = ::openInExternalPlayer,
                         shape = RoundedCornerShape(8.dp)
                     ) {
-                        Icon(Icons.Default.OpenInNew, contentDescription = "Launch")
+                        Icon(AppIcons.OpenInNew, contentDescription = "Launch")
                         Spacer(modifier = Modifier.width(8.dp))
                         Text("Open in External Player (MPV / VLC / Browser)")
                     }
@@ -340,7 +332,7 @@ fun PlayerScreen(
                     // External player button
                     IconButton(onClick = ::openInExternalPlayer) {
                         Icon(
-                            imageVector = Icons.Default.OpenInNew,
+                            imageVector = AppIcons.OpenInNew,
                             contentDescription = "Open in External Player",
                             tint = Color.White
                         )
@@ -361,7 +353,7 @@ fun PlayerScreen(
                             .background(Color.Black.copy(alpha = 0.5f))
                     ) {
                         Icon(
-                            imageVector = Icons.Default.FastRewind,
+                            imageVector = AppIcons.FastRewind,
                             contentDescription = "Rewind 10s",
                             tint = Color.White,
                             modifier = Modifier.size(30.dp)
@@ -377,7 +369,7 @@ fun PlayerScreen(
                         contentAlignment = Alignment.Center
                     ) {
                         Icon(
-                            imageVector = if (isPlaying) Icons.Default.Pause else Icons.Default.PlayArrow,
+                            imageVector = if (isPlaying) AppIcons.Pause else Icons.Default.PlayArrow,
                             contentDescription = if (isPlaying) "Pause" else "Play",
                             tint = Color.White,
                             modifier = Modifier.size(40.dp)
@@ -392,7 +384,7 @@ fun PlayerScreen(
                             .background(Color.Black.copy(alpha = 0.5f))
                     ) {
                         Icon(
-                            imageVector = Icons.Default.FastForward,
+                            imageVector = AppIcons.FastForward,
                             contentDescription = "Forward 10s",
                             tint = Color.White,
                             modifier = Modifier.size(30.dp)
@@ -458,9 +450,9 @@ fun PlayerScreen(
                         IconButton(onClick = { isMuted = !isMuted }) {
                             Icon(
                                 imageVector = when {
-                                    isMuted || volume == 0f -> Icons.AutoMirrored.Filled.VolumeMute
-                                    volume < 0.5f -> Icons.AutoMirrored.Filled.VolumeDown
-                                    else -> Icons.AutoMirrored.Filled.VolumeUp
+                                    isMuted || volume == 0f -> AppIcons.VolumeMute
+                                    volume < 0.5f -> AppIcons.VolumeDown
+                                    else -> AppIcons.VolumeUp
                                 },
                                 contentDescription = "Volume",
                                 tint = Color.White
@@ -486,7 +478,7 @@ fun PlayerScreen(
                         // Subtitle selector
                         IconButton(onClick = { showSubtitleDialog = true }) {
                             Icon(
-                                imageVector = Icons.Default.ClosedCaption,
+                                imageVector = AppIcons.ClosedCaption,
                                 contentDescription = "Subtitles",
                                 tint = if (selectedSubtitle != null) MaterialTheme.colorScheme.primary else Color.White
                             )
@@ -497,7 +489,7 @@ fun PlayerScreen(
                             IconButton(onClick = { speedMenuExpanded = true }) {
                                 Row(verticalAlignment = Alignment.CenterVertically) {
                                     Icon(
-                                        imageVector = Icons.Default.Speed,
+                                        imageVector = AppIcons.Speed,
                                         contentDescription = "Playback Speed",
                                         tint = Color.White
                                     )

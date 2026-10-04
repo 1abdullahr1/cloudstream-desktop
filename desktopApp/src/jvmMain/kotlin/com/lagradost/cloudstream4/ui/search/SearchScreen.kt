@@ -21,7 +21,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FilterChip
@@ -143,7 +143,7 @@ fun SearchScreen(
                 if (query.isNotEmpty()) {
                     IconButton(onClick = { query = ""; searchResults = emptyList(); hasSearched = false }) {
                         Icon(
-                            imageVector = Icons.Default.Clear,
+                            imageVector = Icons.Default.Close,
                             contentDescription = "Clear",
                             tint = MaterialTheme.colorScheme.onSurfaceVariant
                         )

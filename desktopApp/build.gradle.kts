@@ -11,7 +11,6 @@ kotlin {
     sourceSets {
         jvmMain.dependencies {
             implementation(libs.bundles.compose)
-            implementation(libs.compose.material.icons.extended)
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.coroutines.swing)
             implementation(libs.kotlinx.collections.immutable)
