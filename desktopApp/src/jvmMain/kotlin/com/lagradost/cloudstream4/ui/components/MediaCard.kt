@@ -32,6 +32,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
@@ -56,12 +57,14 @@ fun MediaCard(
     val interactionSource = remember { MutableInteractionSource() }
     val isHovered by interactionSource.collectIsHoveredAsState()
     val scale by animateFloatAsState(if (isHovered) 1.04f else 1.0f)
-    val elevation = if (isHovered) 12.dp else 4.dp
     val borderColor = if (isHovered) MaterialTheme.colorScheme.primary else Color.Transparent
 
     Column(
         modifier = modifier
-            .scale(scale)
+            .graphicsLayer {
+                scaleX = scale
+                scaleY = scale
+            }
             .padding(6.dp)
             .clickable(
                 interactionSource = interactionSource,
@@ -73,7 +76,7 @@ fun MediaCard(
             modifier = Modifier
                 .fillMaxWidth()
                 .aspectRatio(2f / 3f)
-                .shadow(elevation, RoundedCornerShape(10.dp))
+                .shadow(4.dp, RoundedCornerShape(10.dp))
                 .border(2.dp, borderColor, RoundedCornerShape(10.dp)),
             shape = RoundedCornerShape(10.dp),
             color = MaterialTheme.colorScheme.surfaceVariant

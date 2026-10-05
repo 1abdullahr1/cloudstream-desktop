@@ -354,12 +354,21 @@ object DesktopPluginManager {
 
     private fun translateDexToJar(dexFile: File, jarFile: File) {
         try {
-            // Attempt reflection call to software.coley dex-translator if available in classpath
-            val translatorClass = Class.forName("software.coley.d2j.DexTranslator")
-            val method = translatorClass.getMethod("translate", File::class.java, File::class.java)
-            method.invoke(null, dexFile, jarFile)
-        } catch (_: Throwable) {
-            // Fallback: Copy as jar
+            val inputs = software.coley.dextranslator.Inputs().addDex(dexFile.toPath())
+            val options = software.coley.dextranslator.Options()
+                .enableLoadStoreOptimization()
+                .setReplaceInvalidMethodBodies(true)
+                .setLenient(true)
+                .setJvmArchiveOutput(jarFile.toPath(), true)
+
+            software.coley.dextranslator.task.Converter()
+                .setInputs(inputs)
+                .setOptions(options)
+                .run()
+                .get(45, java.util.concurrent.TimeUnit.SECONDS)
+        } catch (t: Throwable) {
+            System.err.println("DEX translation exception: ${t.message}")
+            // Fallback: Copy as jar if direct conversion had issues
             dexFile.copyTo(jarFile, overwrite = true)
         }
     }

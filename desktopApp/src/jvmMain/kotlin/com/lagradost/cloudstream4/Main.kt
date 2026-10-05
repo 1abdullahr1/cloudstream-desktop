@@ -27,6 +27,7 @@ import com.lagradost.cloudstream4.theme.CloudStreamTheme
 import com.lagradost.cloudstream4.theme.CloudStreamThemeMode
 import com.lagradost.cloudstream4.ui.components.DesktopNavigationRail
 import com.lagradost.cloudstream4.ui.details.DetailsScreen
+import com.lagradost.cloudstream4.engine.SingleInstanceManager
 import com.lagradost.cloudstream4.ui.downloads.DownloadsScreen
 import com.lagradost.cloudstream4.ui.extensions.ExtensionsScreen
 import com.lagradost.cloudstream4.ui.home.HomeScreen
@@ -36,9 +37,42 @@ import com.lagradost.cloudstream4.ui.search.SearchScreen
 import com.lagradost.cloudstream4.ui.settings.SettingsScreen
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import coil3.ImageLoader
+import coil3.SingletonImageLoader
+import coil3.disk.DiskCache
+import coil3.memory.MemoryCache
+import coil3.request.crossfade
+import okio.Path.Companion.toOkioPath
+import java.io.File
+import kotlin.system.exitProcess
 
-fun main() = application {
-    val windowState = rememberWindowState(width = 1200.dp, height = 780.dp)
+fun main() {
+    if (!SingleInstanceManager.acquireLock()) {
+        System.err.println("CloudStream is already running.")
+        exitProcess(0)
+    }
+
+    try {
+        SingletonImageLoader.setSafe { context ->
+            ImageLoader.Builder(context)
+                .crossfade(true)
+                .memoryCache {
+                    MemoryCache.Builder()
+                        .maxSizePercent(context, 0.20)
+                        .build()
+                }
+                .diskCache {
+                    DiskCache.Builder()
+                        .directory(File(FilePreferenceStore.appDirectory, "image_cache").toOkioPath())
+                        .maxSizeBytes(256L * 1024 * 1024)
+                        .build()
+                }
+                .build()
+        }
+    } catch (_: Throwable) {}
+
+    application {
+        val windowState = rememberWindowState(width = 1200.dp, height = 780.dp)
 
     Window(
         onCloseRequest = ::exitApplication,
@@ -145,4 +179,5 @@ fun main() = application {
             }
         }
     }
+}
 }

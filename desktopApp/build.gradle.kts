@@ -16,6 +16,7 @@ kotlin {
             implementation(libs.kotlinx.collections.immutable)
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.ktor.client.java)
+            implementation(libs.nicehttp)
             implementation(libs.vlcj)
             implementation("software.coley:dex-translator:1.1.1") {
                 exclude(group = "com.android.tools", module = "r8")
@@ -50,6 +51,16 @@ tasks.withType<JavaExec> {
 compose.desktop {
     application {
         mainClass = "com.lagradost.cloudstream4.MainKt"
+        jvmArgs(
+            "-XX:+UseG1GC",
+            "-XX:+UseStringDeduplication",
+            "-XX:MinHeapFreeRatio=20",
+            "-XX:MaxHeapFreeRatio=40",
+            "-Dskiko.renderApi=DIRECT3D",
+            "-Dsun.java2d.d3d=true",
+            "-Dskiko.vsync=true",
+            "--enable-native-access=ALL-UNNAMED"
+        )
         nativeDistributions {
             targetFormats(TargetFormat.Msi, TargetFormat.Exe)
             packageName = "CloudStream"

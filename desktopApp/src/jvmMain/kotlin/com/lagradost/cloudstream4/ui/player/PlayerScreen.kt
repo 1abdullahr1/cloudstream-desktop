@@ -110,20 +110,23 @@ fun PlayerScreen(
         }
     }
 
-    // Save history periodically
-    LaunchedEffect(currentPositionMs) {
-        if (parentUrl.isNotBlank() && durationMs > 0) {
-            DesktopHistoryManager.saveProgress(
-                HistoryItem(
-                    url = parentUrl,
-                    apiName = apiName,
-                    title = title,
-                    episodeName = episodeTitle,
-                    episodeData = episodeData,
-                    positionMs = currentPositionMs,
-                    durationMs = durationMs
+    // Save history periodically (throttled every 5 seconds to prevent constant disk I/O and UI recomposition)
+    LaunchedEffect(isPlaying) {
+        while (isPlaying) {
+            delay(5000)
+            if (parentUrl.isNotBlank() && durationMs > 0 && currentPositionMs > 0) {
+                DesktopHistoryManager.saveProgress(
+                    HistoryItem(
+                        url = parentUrl,
+                        apiName = apiName,
+                        title = title,
+                        episodeName = episodeTitle,
+                        episodeData = episodeData,
+                        positionMs = currentPositionMs,
+                        durationMs = durationMs
+                    )
                 )
-            )
+            }
         }
     }
 
@@ -204,6 +207,9 @@ fun PlayerScreen(
 
                         val playMethod = media.javaClass.getMethod("play", String::class.java, Array<String>::class.java)
                         val options = mutableListOf<String>()
+                        options.add(":avcodec-hw=any")
+                        options.add(":no-video-title-show")
+                        options.add(":network-caching=2000")
                         headers.forEach { (k, v) ->
                             if (k.equals("Referer", ignoreCase = true)) options.add(":http-referrer=$v")
                             if (k.equals("User-Agent", ignoreCase = true)) options.add(":http-user-agent=$v")
